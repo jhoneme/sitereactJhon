@@ -1,0 +1,160 @@
+Vamos começar com a estrutura do projeto e os nomes dos arquivos principais:
+
+1. `package.json`: Este é o arquivo de configuração do projeto que contém todas as dependências necessárias.
+
+2. `src/index.js`: Este é o ponto de entrada do aplicativo React.
+
+3. `src/App.js`: Este é o componente principal que renderiza todas as outras páginas.
+
+4. `src/pages/Home.js`: Este é o componente da Página Inicial.
+
+5. `src/pages/Account.js`: Este é o componente da Página de Conta.
+
+6. `src/pages/Contact.js`: Este é o componente da Página de Contato.
+
+Agora, vamos ao conteúdo de cada arquivo:
+
+`package.json`
+```json
+{
+  "name": "my-react-app",
+  "version": "1.0.0",
+  "description": "A simple React app",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3"
+  }
+}
+```
+
+`src/index.js`
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+`src/App.js`
+```javascript
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import Account from './pages/Account';
+import Contact from './pages/Contact';
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/account" component={Account} />
+        <Route path="/contact" component={Contact} />
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+`src/pages/Home.js`
+```javascript
+import React from 'react';
+
+function Home() {
+  return (
+    <div>
+      <h1>Welcome to Our Company</h1>
+      <p>We are a trusted and innovative company in our field.</p>
+    </div>
+  );
+}
+
+export default Home;
+```
+
+`src/pages/Account.js`
+```javascript
+import React from 'react';
+
+function Account() {
+  return (
+    <div>
+      <h1>Account</h1>
+      <form>
+        <label>
+          Name:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Email:
+          <input type="email" name="email" />
+        </label>
+        <label>
+          Password:
+          <input type="password" name="password" />
+        </label>
+        <label>
+          Confirm Password:
+          <input type="password" name="confirmPassword" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  );
+}
+
+export default Account;
+```
+
+`src/pages/Contact.js`
+```javascript
+import React from 'react';
+
+function Contact() {
+  return (
+    <div>
+      <h1>Contact Us</h1>
+      <form>
+        <label>
+          Name:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Email:
+          <input type="email" name="email" />
+        </label>
+        <label>
+          Subject:
+          <input type="text" name="subject" />
+        </label>
+        <label>
+          Message:
+          <textarea name="message" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  );
+}
+
+export default Contact;
+```
+
+Por favor, note que este é um exemplo básico e não inclui a funcionalidade de enviar os formulários por e-mail. Para isso, você precisaria de um servidor backend para lidar com as solicitações de envio de e-mail.
